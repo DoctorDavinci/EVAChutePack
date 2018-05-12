@@ -5,13 +5,23 @@ namespace EVAChutePack
     [KSPAddon(KSPAddon.Startup.Flight, false)]
     public class EVAChutePack : MonoBehaviour
     {
+        private bool triggered = false;
+
         public void Update()
         {
             if (HighLogic.LoadedSceneIsFlight)
             {
                 if (FlightGlobals.ActiveVessel.isEVA)
                 {
-                    CheckChute();
+                    if (!FlightGlobals.ActiveVessel.LandedOrSplashed)
+                    {
+                        triggered = true;
+                    }
+
+                    if (triggered && FlightGlobals.ActiveVessel.LandedOrSplashed)
+                    {
+                        CheckChute();
+                    }
                 }
             }
         }
@@ -28,6 +38,8 @@ namespace EVAChutePack
                         EVAchute.Repack();
                     }
                 }
+
+                triggered = false;
             }
         }
 

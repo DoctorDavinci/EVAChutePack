@@ -60,7 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModuleParaMotor.cs" />
     <Compile Include="EVAChutePack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
